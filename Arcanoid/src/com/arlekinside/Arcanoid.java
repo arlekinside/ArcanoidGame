@@ -309,15 +309,12 @@ class Rectangles{ //класс со всеми клетками
 		}
 	}
 }
-class Deck implements KeyListener,Runnable{
+class Deck implements KeyListener{
 	public static int width = 80;
 	public static final int HEIGHT = 10;
 	public static int x = 310;
 	public static int y = Arcanoid.FRAME_HEIGHT - 100;
-	public static Color color = Color.yellow; 
-	Thread t1,t2;
-	boolean _t1 = false;
-	boolean _t2 = false;
+	public static Color color = Color.yellow;
 	public void keyReleased(KeyEvent e) {
 		
 	}
@@ -327,30 +324,10 @@ class Deck implements KeyListener,Runnable{
 	public void keyPressed(KeyEvent e) {
 		int k = e.getKeyCode();
 		if(k == KeyEvent.VK_A ^ k == KeyEvent.VK_LEFT) {
-
-			_t1 = true;
-			t1 = new Thread(new Deck());
-			//Deck.x-=100;
-			t1.start();
-		}
-		if(k == KeyEvent.VK_D ^ k == KeyEvent.VK_RIGHT) {
-			_t2=false;
-			t2 = new Thread(new Deck());
-			//Deck.x+=100;
-			t2.start();
-		}
-	}
-	public void run() {
-		if(_t1) {
 			Deck.x-=100;
 		}
-		if(_t2) {
+		if(k == KeyEvent.VK_D ^ k == KeyEvent.VK_RIGHT) {
 			Deck.x+=100;
-		}
-		try {
-			TimeUnit.MICROSECONDS.sleep(1000);
-		}catch(Exception ex) {
-			ex.printStackTrace();
 		}
 	}
 }
