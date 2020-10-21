@@ -1,3 +1,4 @@
+package com.arlekinside;
 
 import javax.swing.*;
 import java.awt.*;
